@@ -86,15 +86,6 @@ Always consider security, i.e., sometimes you may not want to unveil information
               />
             </div>
             <div class="mb-2">
-              <label for="emailFormControl" class="form-label mb-1">Email</label>
-              <input
-                v-model="credentials.email"
-                type="email"
-                class="form-control"
-                id="emailFormControl"
-              />
-            </div>
-            <div class="mb-2">
               <label for="passwordFormControl" class="form-label mb-1">Password</label>
               <input
                 v-model="credentials.password"

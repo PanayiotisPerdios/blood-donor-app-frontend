@@ -12,6 +12,32 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
+      path: '/hospitals',
+      name: 'hospitals',
+      component: () => import('../views/HospitalsView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/hospitals/:id',
+      name: 'hospital',
+      component: () => import('../views/HospitalView.vue'),
+      meta: { requiresAuth: true },
+      children: [
+        {
+          path: '',
+          name: 'hospital-details',
+          component: () => import('../views/HospitalDetailsView.vue'),
+          meta: { requiresAuth: true }
+        }
+      ]
+    },
+    {
+      path: '/applications',
+      name: 'application',
+      component: () => import('../views/ApplicationsView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
       path: '/signin',
       name: 'signin',
       // route level code-splitting

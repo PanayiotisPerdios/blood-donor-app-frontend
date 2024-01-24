@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
 
-const urlRef = ref('http://localhost:9090/api/hospital/all');
+const urlRef = ref('http://localhost:9090/hospital?page=0&size=100');
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
 
@@ -10,6 +10,7 @@ onMounted(() => {
   performRequest();
 });
 </script>
+
 
 <template>
   <div class="bg-body-tertiary">
@@ -24,24 +25,17 @@ onMounted(() => {
               <thead>
               <tr>
                 <!-- <th>Course ID</th> -->
-                <th>Hospital Names</th>
-                <th>Actions</th>
+                <th>Hospital Name</th>
               </tr>
               </thead>
               <tbody v-if="data">
-              <tr v-for="hospital in data.Hospitals" :key="hospital.id">
+              <tr v-for="hospital in data._embedded.hospitals">
                 <td>{{ hospital.name }}</td>
-                <td>
-                  <!-- TODO course.id -->
-                  <RouterLink :to="{ name: 'hospital-details', params: { id: hospital.id } }">
-                    Display
-                  </RouterLink>
-                </td>
+
               </tr>
               </tbody>
             </table>
           </div>
-          <pre>{{ data }}</pre>
         </div>
       </div>
     </div>

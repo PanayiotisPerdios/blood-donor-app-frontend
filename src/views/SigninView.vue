@@ -5,6 +5,7 @@ import { onBeforeMount, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useApplicationStore } from '@/stores/application.js';
 
+
 const router = useRouter();
 const { setUserData, persistUserData, isAuthenticated } = useApplicationStore();
 
@@ -78,27 +79,15 @@ Always consider security, i.e., sometimes you may not want to unveil information
             </div>
             <div class="mb-2">
               <label for="usernameFormControl" class="form-label mb-1">Username</label>
-              <input
-                v-model="credentials.username"
-                type="text"
-                class="form-control"
-                id="usernameFormControl"
-              />
+              <input v-model="credentials.username" type="text" class="form-control" id="usernameFormControl" />
             </div>
             <div class="mb-2">
               <label for="passwordFormControl" class="form-label mb-1">Password</label>
-              <input
-                v-model="credentials.password"
-                type="password"
-                class="form-control"
-                id="passwordFormControl"
-              />
+              <input v-model="credentials.password" type="password" class="form-control" id="passwordFormControl" />
             </div>
             <button @click="onFormSubmit" type="submit" class="btn btn-primary">
               Signin
-              <span class="fst-italic" v-if="credentials.username"
-              >as {{ credentials.username }}</span
-              >
+              <span class="fst-italic" v-if="credentials.username">as {{ credentials.username }}</span>
             </button>
           </form>
         </div>
@@ -106,3 +95,5 @@ Always consider security, i.e., sometimes you may not want to unveil information
     </div>
   </div>
 </template>
+
+

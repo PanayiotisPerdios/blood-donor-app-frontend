@@ -1,23 +1,26 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router'
 import { useApplicationStore } from '@/stores/application.js';
+import { onMounted, ref } from 'vue'
 const applicationStore = useApplicationStore();
+
+const route = useRoute();
+
+const applicationIdRef = ref(null);
+
+
+
 </script>
 
 <template>
   <header class="text-bg-dark">
     <div class="container">
       <div class="d-flex flex-wrap justify-content-center py-2 px-3">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-
-        </a>
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"></a>
         <ul class="nav nav-pills">
           <!-- @EXERCISE: Add different color to active link (improve UX/UX). -->
           <!-- @EXERCISE: Add different color to active link with nested routes (improve UX/UX). -->
           <!-- @EXERCISE: Hide links that users has no access to. -->
-          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
-            <router-link :to="{ name: 'home' }" class="nav-link text-white">Home</router-link>
-          </li>
           <li class="nav-item" v-if="applicationStore.isAuthenticated === false">
             <router-link :to="{ name: 'signup' }" class="nav-link text-white">Signup</router-link>
           </li>
@@ -26,6 +29,21 @@ const applicationStore = useApplicationStore();
           </li>
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'signout' }" class="nav-link text-white">Signout</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+            <router-link :to="{ name: 'profile' }" class="nav-link text-white">Profile</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+            <router-link :to="{ name: 'home' }" class="nav-link text-white">Home</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+            <router-link :to="{ name: 'hospitals' }" class="nav-link text-white">Hospitals</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+            <router-link :to="{ name: 'applications' }" class="nav-link text-white">Applications</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+            <router-link :to="{ name: 'application-new' }" class="nav-link text-white">Create Application</router-link>
           </li>
         </ul>
       </div>

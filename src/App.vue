@@ -13,12 +13,17 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <h1>Blood Donor App</h1>
+  <h1 class="position-absolute top-0 start-0">Blood Donor App</h1>
   <AppHeader />
   <RouterView />
 </template>
 
 <style scoped>
+
+h1{
+  color: #f2f2f2;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;

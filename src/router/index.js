@@ -12,6 +12,12 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
+      path: '/hospitals/new',
+      name: 'hospital-new',
+      component: () => import('../views/CreateHospital.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
       path: '/hospitals',
       name: 'hospitals',
       component: () => import('../views/HospitalsView.vue'),
@@ -22,20 +28,65 @@ const router = createRouter({
       name: 'hospital',
       component: () => import('../views/HospitalView.vue'),
       meta: { requiresAuth: true },
+    },
+    {
+      path: '/applications:id/bloodtest/new',
+      name: 'applications',
+      component: () => import('../views/CreateApplicationBloodTestView.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/applications/new',
+      name: 'application-new',
+      component: () => import('../views/CreateApplicationView.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/applications',
+      name: 'applications',
+      component: () => import('../views/ApplicationsView.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/application/:id',
+      name: 'application',
+      component: () => import('../views/ApplicationView.vue'),
+      meta: { requiresAuth: true },
       children: [
         {
           path: '',
-          name: 'hospital-details',
-          component: () => import('../views/HospitalDetailsView.vue'),
-          meta: { requiresAuth: true }
+          name: 'application-details',
+          component: () => import("../views/ApplicationDetailsView.vue"),
+          meta: { requiresAuth: true },
+        },{
+          path: '',
+          name: 'application-delete',
+          component: () => import("../views/DeleteApplicationView.vue"),
+          meta: { requiresAuth: true },
+
+
         }
       ]
     },
     {
-      path: '/applications',
-      name: 'application',
-      component: () => import('../views/ApplicationsView.vue'),
-      meta: { requiresAuth: true }
+      path: '/users',
+      name: 'users',
+      component: () => import('../views/UsersView.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/user/:id',
+      name: 'user',
+      component: () => import('../views/UserView.vue'),
+      meta: { requiresAuth: true },
+      children: [
+        {
+          path: '',
+          name: 'user-details',
+          component: () => import("../views/UserDetailsView.vue"),
+          meta: { requiresAuth: true },
+        }
+      ]
     },
     {
       path: '/signin',
@@ -57,10 +108,13 @@ const router = createRouter({
     {
       path: '/signout',
       name: 'signout',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/SignoutView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () => import('../views/ProfileView.vue'),
       meta: { requiresAuth: true }
     }
   ]

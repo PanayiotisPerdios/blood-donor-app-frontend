@@ -24,7 +24,6 @@ onMounted(() => {
             <table class="table">
               <thead>
               <tr>
-                <!-- <th>Course ID</th> -->
                 <th>Users Name</th>
               </tr>
               </thead>

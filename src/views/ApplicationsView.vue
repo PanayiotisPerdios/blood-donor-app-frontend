@@ -60,8 +60,8 @@ const rejectApplication = (applicationId) => {
             <table class="table">
               <thead>
               <tr>
-                <th>Applications</th>
-                <th>Actions</th>
+                <th>First Name</th>
+                <th>Last Name</th>
               </tr>
               </thead>
               <tbody v-if="data">
@@ -69,8 +69,10 @@ const rejectApplication = (applicationId) => {
                 <td>{{ application.firstName }}</td>
                 <td>{{ application.lastName }}</td>
                 <td>
-                  <RouterLink :to="{ name: 'application-details', params: { id: application.id }}">Display</RouterLink>
-                  <RouterLink :to="{ name: 'application-delete', params: { id: application.id }}">Delete</RouterLink>
+                  <tr><RouterLink :to="{ name: 'application-details', params: { id: application.id }}">Details</RouterLink></tr>
+                  <tr><RouterLink :to="{ name: 'application-delete', params: { id: application.id }}">Delete</RouterLink></tr>
+                </td>
+                <td>
                   <button @click="approveApplication(application.id)">Approve</button>
                   <button @click="rejectApplication(application.id)">Reject</button>
                 </td>

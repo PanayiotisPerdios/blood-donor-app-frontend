@@ -22,6 +22,7 @@ onMounted(() => {
   <div>
     <table class="table">
       <tbody v-if="loading">
+
       <tr>
         <td colspan="2">Loading...</td>
       </tr>

@@ -26,7 +26,11 @@ const { userData } = useApplicationStore();
                     <td><pre>{{ userData.username }}</pre></td>
                     <td><pre>{{ userData.id }}</pre></td>
                     <td><pre>{{ userData.email}}</pre></td>
-                    <td><pre>{{ userData.roles}}</pre></td>
+                    <td>
+                        <span v-for="(role, index) in userData.roles" :key="index">
+                          {{ role }},
+                        </span>
+                    </td>
                   </tr>
               </tbody>
             </table>

@@ -1,12 +1,9 @@
 <script setup>
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink} from 'vue-router'
 import { useApplicationStore } from '@/stores/application.js';
-import { onMounted, ref } from 'vue'
 const applicationStore = useApplicationStore();
 
-const route = useRoute();
 
-const applicationIdRef = ref(null);
 
 
 
@@ -39,11 +36,23 @@ const applicationIdRef = ref(null);
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'hospitals' }" class="nav-link text-white">Hospitals</router-link>
           </li>
-          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true && applicationStore.userData.roles.includes('ROLE_ADMIN')">
             <router-link :to="{ name: 'applications' }" class="nav-link text-white">Applications</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true && applicationStore.userData.roles.includes('ROLE_DONOR')">
+            <router-link :to="{ name: 'notifications' }" class="nav-link text-white">Notifications</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true && applicationStore.userData.roles.includes('ROLE_ADMIN')">
+            <router-link :to="{ name: 'users' }" class="nav-link text-white">Users</router-link>
           </li>
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'application-new' }" class="nav-link text-white">Create Application</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true && applicationStore.userData.roles.includes('ROLE_ADMIN')">
+            <router-link :to="{ name: 'hospital-new' }" class="nav-link text-white">Create Hospital</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true && applicationStore.userData.roles.includes('ROLE_ADMIN')">
+            <router-link :to="{ name: 'notifications-new' }" class="nav-link text-white">Create Notifications</router-link>
           </li>
         </ul>
       </div>

@@ -7,7 +7,7 @@ const formDataRef = ref({
   name: ''
 });
 
-const urlRef = ref("http://localhost:9090/hospital");
+const urlRef = ref("http://localhost:9090/api/hospital/new");
 const authRef = ref(true);
 const methodRef = ref("POST");
 

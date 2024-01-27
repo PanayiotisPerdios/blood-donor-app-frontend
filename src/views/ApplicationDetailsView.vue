@@ -1,9 +1,9 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useRemoteData } from '@/composables/useRemoteData.js';
 
-const router = useRouter();
+
 const route = useRoute();
 
 const applicationIdRef = ref(null);

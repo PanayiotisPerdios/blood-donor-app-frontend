@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
 
-const urlRef = ref('http://localhost:9090/user');
+const urlRef = ref('http://localhost:9090/api/user/all');
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
 
@@ -26,14 +26,16 @@ onMounted(() => {
               <tr>
                 <th>Users Name</th>
               </tr>
+              <pre></pre>
               </thead>
               <tbody v-if="data">
-              <tr v-for="user in data._embedded.name">
-                <td>{{ user.name }}</td>
+              <tr v-for="user in data" :key="user.id">
+                <td>{{ user.username }}</td>
                 <td>
-                  <RouterLink :to="{ name: 'user-details', params: { id: user.id }}">User Details</RouterLink>
+                  <tr><RouterLink :to="{ name: 'user-details', params: { id: user.id }}">Details</RouterLink></tr>
+                  <tr><RouterLink :to="{ name: 'user-delete', params: { id: user.id }}">Delete</RouterLink></tr>
+                  <tr><RouterLink :to="{ name: 'user-edit', params: { id: user.id }}">Edit</RouterLink></tr>
                 </td>
-
               </tr>
               </tbody>
             </table>

@@ -9,6 +9,7 @@ const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
 onMounted(() => {
   performRequest();
 });
+
 </script>
 
 
@@ -24,14 +25,12 @@ onMounted(() => {
             <table class="table">
               <thead>
               <tr>
-                <!-- <th>Course ID</th> -->
                 <th>Hospital Name</th>
               </tr>
               </thead>
               <tbody v-if="data">
               <tr v-for="hospital in data._embedded.hospitals">
                 <td>{{ hospital.name }}</td>
-
               </tr>
               </tbody>
             </table>

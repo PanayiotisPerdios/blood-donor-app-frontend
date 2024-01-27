@@ -14,7 +14,7 @@ const router = createRouter({
     {
       path: '/hospitals/new',
       name: 'hospital-new',
-      component: () => import('../views/CreateHospital.vue'),
+      component: () => import('../views/CreateHospitalView.vue'),
       meta: { requiresAuth: true }
     },
     {
@@ -27,12 +27,6 @@ const router = createRouter({
       path: '/hospitals/:id',
       name: 'hospital',
       component: () => import('../views/HospitalView.vue'),
-      meta: { requiresAuth: true },
-    },
-    {
-      path: '/applications:id/bloodtest/new',
-      name: 'applications',
-      component: () => import('../views/CreateApplicationBloodTestView.vue'),
       meta: { requiresAuth: true },
     },
     {
@@ -54,18 +48,26 @@ const router = createRouter({
       meta: { requiresAuth: true },
       children: [
         {
-          path: '',
+          path: 'details',
           name: 'application-details',
           component: () => import("../views/ApplicationDetailsView.vue"),
           meta: { requiresAuth: true },
         },{
-          path: '',
+          path: 'delete',
           name: 'application-delete',
           component: () => import("../views/DeleteApplicationView.vue"),
           meta: { requiresAuth: true },
-
-
-        }
+        },{
+          path: 'approve',
+          name: 'application-approve',
+          component: () => import("../views/ApplicationApproveView.vue"),
+          meta: { requiresAuth: true },
+        },{
+          path: 'reject',
+          name: 'application-reject',
+          component: () => import("../views/ApplicationRejectView.vue"),
+          meta: { requiresAuth: true },
+        },
       ]
     },
     {
@@ -85,8 +87,38 @@ const router = createRouter({
           name: 'user-details',
           component: () => import("../views/UserDetailsView.vue"),
           meta: { requiresAuth: true },
+        },
+        {
+          path: '',
+          name: 'user-delete',
+          component: () => import("../views/DeleteUserView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: '',
+          name: 'user-edit',
+          component: () => import("../views/EditUserView.vue"),
+          meta: { requiresAuth: true },
         }
       ]
+    },{
+      path: '/notifications',
+      name: 'notifications',
+      component: () => import('../views/NotificationsView.vue'),
+      meta: { requiresAuth: true },
+      children : [
+        {
+          path: '/notifications/delete/:id',
+          name: 'notification-delete',
+          component: () => import("../views/DeleteNotificationView.vue"),
+          meta: { requiresAuth: true },
+        }
+      ]
+    },{
+      path: '/notifications/new/',
+      name: 'notifications-new',
+      component: () => import('../views/CreateNotificationView.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/signin',

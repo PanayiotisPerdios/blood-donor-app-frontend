@@ -14,10 +14,15 @@ function checkJWT(token) {
 }
 
 export const useApplicationStore = defineStore('application', () => {
-  const userData = ref(null);
+  const userData = ref();
 
   const setUserData = (tempUserData) => {
     userData.value = tempUserData;
+  };
+
+  const getUserId = () => {
+    console.log(userData.value);
+    return userData.value.id;
   };
   const persistUserData = () => {
     localStorage.setItem('userData', JSON.stringify(userData.value));
@@ -38,5 +43,5 @@ export const useApplicationStore = defineStore('application', () => {
     return checkJWT(userData.value?.accessToken);
   });
 
-  return { userData, setUserData, persistUserData, loadUserData, clearUserData, isAuthenticated };
+  return { userData, setUserData, persistUserData, loadUserData, clearUserData,getUserId, isAuthenticated };
 });

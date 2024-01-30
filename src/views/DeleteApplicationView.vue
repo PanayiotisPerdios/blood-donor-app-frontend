@@ -15,7 +15,7 @@ const { loading, performRequest } = useRemoteData(urlRef, authRef, methodRef);
 
 
 const deleteApplication = () => {
-  urlRef.value = `https://localhost:9090/api/application/delete/${applicationIdRef.value}`;
+  urlRef.value = `http://localhost:9090/api/application/delete/${applicationIdRef.value}`;
   performRequest();
 };
 

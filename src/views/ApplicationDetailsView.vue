@@ -3,12 +3,11 @@ import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useRemoteData } from '@/composables/useRemoteData.js';
 
-
 const route = useRoute();
 
 const applicationIdRef = ref(null);
 const urlRef = computed(() => {
-  return 'http://localhost:9090/application/' + applicationIdRef.value;
+  return 'http://localhost:9090/api/application/' + applicationIdRef.value;
 });
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
@@ -52,6 +51,38 @@ onMounted(() => {
       <tr>
         <th>Approval:</th>
         <td>{{ data.approved }}</td>
+      </tr>
+      <tr>
+        <th>Height:</th>
+        <td>{{ data.bloodTest.height }}</td>
+      </tr>
+      <tr>
+        <th>Weight:</th>
+        <td>{{ data.bloodTest.weight }}</td>
+      </tr>
+      <tr>
+        <th>Rhesus Factor:</th>
+        <td>{{ data.bloodTest.rhesusFactor }}</td>
+      </tr>
+      <tr>
+        <th>Blood Pressure:</th>
+        <td>{{ data.bloodTest.bloodPressure }}</td>
+      </tr>
+      <tr>
+        <th>White Blood Cell Count:</th>
+        <td>{{ data.bloodTest.whiteBloodCellCount }}</td>
+      </tr>
+      <tr>
+        <th>Red Blood Cell Count:</th>
+        <td>{{ data.bloodTest.redBloodCellCount }}</td>
+      </tr>
+      <tr>
+        <th>Date of Test:</th>
+        <td>{{ data.bloodTest.dateOfTest }}</td>
+      </tr>
+      <tr>
+        <th>Hospital Name:</th>
+        <td>{{ data.bloodTest.hospitalName }}</td>
       </tr>
       </tbody>
     </table>

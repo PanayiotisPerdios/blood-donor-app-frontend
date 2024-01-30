@@ -1,27 +1,29 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { ref,onMounted} from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
+import { useRoute } from 'vue-router';
 
 const userIdRef = ref(null);
-const deleteUser = async () => {
-  try {
-    const response = await fetch('https://localhost:9090/user' + userIdRef.value, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+const route = useRoute();
 
-    if (response.ok) {
-      console.log('Resource deleted successfully');
-    } else {
-      console.error('Failed to delete resource');
-    }
-  } catch (error) {
-    console.error('An error occurred during the deletion:', error);
-  }
+const urlRef = ref('');
+
+const authRef = ref(true);
+const methodRef = ref("DELETE");
+
+const { loading, performRequest } = useRemoteData(urlRef, authRef, methodRef);
+
+
+const deleteUser = () => {
+  urlRef.value = `http://localhost:9090/api/user/delete/${userIdRef.value}`;
+  performRequest();
 };
+
+onMounted(() => {
+  // Extract application ID from the route parameters
+  userIdRef.value = route.params.id;
+});
+
 </script>
 
 <template>

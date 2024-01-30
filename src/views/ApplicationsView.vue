@@ -1,10 +1,24 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 const urlRef = ref('http://localhost:9090/api/application/all');
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
+
+
+const updateApprovalStatus = (applicationId, approved) => {
+  const approvalEndpoint = approved
+    ? `http://localhost:9090/api/application/approve/${applicationId}`
+    : `http://localhost:9090/api/application/reject/${applicationId}`;
+
+  useRemoteData(ref(approvalEndpoint), authRef, ref('POST')).performRequest();
+  // You may want to update the data after performing the request, depending on your API response.
+  performRequest();
+};
 
 onMounted(() => {
   performRequest();
@@ -39,8 +53,8 @@ onMounted(() => {
                   <tr><RouterLink :to="{ name: 'application-delete', params: { id: application.id }}">Delete</RouterLink></tr>
                 </td>
                 <td>
-                  <RouterLink :to="{ name: 'application-approve', params: { id: application.id }}" custom v-slot="{ navigate }"> <button @click="navigate" role = "link">Approve</button></RouterLink>
-                  <RouterLink :to="{ name: 'application-reject', params: { id: application.id }}" custom v-slot="{ navigate }"> <button @click="navigate" role = "link">Reject</button></RouterLink>
+                  <button @click="() => updateApprovalStatus(application.id, true)" role="link">Approve</button>
+                  <button @click="() => updateApprovalStatus(application.id, false)" role="link">Reject</button>
                 </td>
               </tr>
               </tbody>

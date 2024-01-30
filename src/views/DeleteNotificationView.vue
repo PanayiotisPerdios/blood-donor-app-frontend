@@ -8,12 +8,14 @@ const route = useRoute();
 
 const urlRef = ref('');
 const authRef = ref(true);
+const methodRef = ref("DELETE");
 
-const { loading, performRequest } = useRemoteData(urlRef, authRef);
+
+const { loading, performRequest } = useRemoteData(urlRef, authRef, methodRef);
 
 const deleteNotification = () => {
   urlRef.value = `http://localhost:9090/api/notifications/${notificationIdRef.value}`;
-  performRequest({ method: 'DELETE' });
+  performRequest();
 };
 
 onMounted(() => {

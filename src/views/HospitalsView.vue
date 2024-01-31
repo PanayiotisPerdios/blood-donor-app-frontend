@@ -1,10 +1,12 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref,computed } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
 
-const urlRef = ref('http://localhost:9090/hospital?page=0&size=100');
+
+const urlRef = ref('http://localhost:9090/api/hospital/all');
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
+
 
 onMounted(() => {
   performRequest();
@@ -29,7 +31,7 @@ onMounted(() => {
               </tr>
               </thead>
               <tbody v-if="data">
-              <tr v-for="hospital in data._embedded.hospitals">
+              <tr v-for="hospital in data">
                 <td>{{ hospital.name }}</td>
               </tr>
               </tbody>

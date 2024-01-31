@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
+import { useApplicationStore } from '@/stores/application.js';
+const applicationStore = useApplicationStore();
 
 const urlRef = ref('http://localhost:9090/api/user/all');
 const authRef = ref(true);
@@ -33,8 +35,7 @@ onMounted(() => {
                 <td>{{ user.username }}</td>
                 <td>
                   <tr><RouterLink :to="{ name: 'user-details', params: { id: user.id }}">Details</RouterLink></tr>
-                  <tr><RouterLink :to="{ name: 'user-delete', params: { id: user.id }}">Delete</RouterLink></tr>
-                  <tr><RouterLink :to="{ name: 'user-edit', params: { id: user.id }}">Edit</RouterLink></tr>
+                  <tr v-if="!applicationStore.userData.roles.includes('ROLE_SECRETARY')"><RouterLink :to="{ name: 'user-delete', params: { id: user.id }}">Delete</RouterLink></tr>
                 </td>
               </tr>
               </tbody>

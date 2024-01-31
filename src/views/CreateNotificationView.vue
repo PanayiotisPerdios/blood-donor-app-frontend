@@ -45,7 +45,7 @@ const onSubmit = () => {
     <button @click="onSubmit" type="submit" class="btn btn-primary">Submit</button>
   </div>
   <div v-if="data">
-    <p>Notification has been successfully created</p>
+    <p>Notification has successfully been created</p>
   </div>
 </template>
 

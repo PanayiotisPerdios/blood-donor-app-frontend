@@ -16,7 +16,6 @@ const updateApprovalStatus = (applicationId, approved) => {
     : `http://localhost:9090/api/application/reject/${applicationId}`;
 
   useRemoteData(ref(approvalEndpoint), authRef, ref('POST')).performRequest();
-  // You may want to update the data after performing the request, depending on your API response.
   performRequest();
 };
 

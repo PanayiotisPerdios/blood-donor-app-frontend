@@ -1,11 +1,10 @@
 <script setup>
-import { computed, ref,onMounted } from 'vue'
+import { computed, ref } from 'vue'
 import { useRemoteData } from "@/composables/useRemoteData.js";
 import { useApplicationStore } from '@/stores/application.js';
-import { useRoute } from 'vue-router'
 
 const applicationStore = useApplicationStore();
-const route = useRoute();
+
 
 
 const formDataRef = ref({
@@ -45,9 +44,6 @@ const onSubmit = () => {
   performRequest();
 };
 
-onMounted(() => {
-
-});
 
 </script>
 

@@ -1,10 +1,11 @@
 <script setup>
 import { ref,onMounted} from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
-import { useRoute } from 'vue-router';
+import { useRoute,useRouter } from 'vue-router';
 
 const userIdRef = ref(null);
 const route = useRoute();
+const router = useRouter();
 
 const urlRef = ref('');
 

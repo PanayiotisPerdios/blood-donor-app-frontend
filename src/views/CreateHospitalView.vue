@@ -15,13 +15,14 @@ const { data, performRequest } = useRemoteData(urlRef, authRef, methodRef, formD
 
 const onSubmit = () => {
   performRequest();
+  console.log(data);
 };
 
 </script>
 
 <template>
   <div class="container mb-4">
-    <h1>New Application</h1>
+    <h1>New Hospital</h1>
   </div>
   <div>
   </div>
@@ -32,6 +33,7 @@ const onSubmit = () => {
     </div>
     <button @click="onSubmit" type="submit" class="btn btn-primary">Submit</button>
   </div>
+
 </template>
 
 <style scoped>

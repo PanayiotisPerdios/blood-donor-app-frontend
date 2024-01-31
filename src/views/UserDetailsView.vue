@@ -8,7 +8,7 @@ const route = useRoute();
 
 const userIdRef = ref(null);
 const urlRef = computed(() => {
-  return 'http://localhost:9090/user/' + userIdRef.value;
+  return `  http://localhost:9090/api/user/${userIdRef.value}`;
 });
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
@@ -22,7 +22,6 @@ onMounted(() => {
   <div>
     <table class="table">
       <tbody v-if="loading">
-
       <tr>
         <td colspan="2">Loading...</td>
       </tr>
@@ -46,7 +45,9 @@ onMounted(() => {
       </tr>
       <tr>
         <th>Roles:</th>
-        <td>{{ data.roles }}</td>
+        <td>
+            <td v-for="role in data.roles" :key="role.id">{{ role.name }}</td>
+        </td>
       </tr>
       </tbody>
     </table>

@@ -11,6 +11,8 @@ const route = useRoute();
 
 const applicationStore = useApplicationStore();
 
+
+
 const urlRef = computed(() => {
   const userId = applicationStore.getUserId();
   return `http://localhost:9090/api/notifications/${userId}`;
@@ -46,8 +48,7 @@ onMounted(() => {
               <tr v-for="notification in data" :key="notification.id">
                 <td>{{ notification.type }}</td>
                 <td>{{notification.hospitalName}}</td>
-                <td>
-                  <RouterLink :to="{ name: 'notification-delete', params: { id: notification.id }}">Delete</RouterLink>                </td>
+                <td><RouterLink :to="{ name: 'notification-delete', params: { id: notification.id }}">Delete</RouterLink></td>
               </tr>
               </tbody>
             </table>

@@ -57,17 +57,7 @@ const router = createRouter({
           name: 'application-delete',
           component: () => import("../views/DeleteApplicationView.vue"),
           meta: { requiresAuth: true },
-        },{
-          path: 'approve',
-          name: 'application-approve',
-          component: () => import("../views/ApplicationApproveView.vue"),
-          meta: { requiresAuth: true },
-        },{
-          path: 'reject',
-          name: 'application-reject',
-          component: () => import("../views/ApplicationRejectView.vue"),
-          meta: { requiresAuth: true },
-        },
+        }
       ]
     },
     {
@@ -93,12 +83,6 @@ const router = createRouter({
           name: 'user-delete',
           component: () => import("../views/DeleteUserView.vue"),
           meta: { requiresAuth: true },
-        },
-        {
-          path: '',
-          name: 'user-edit',
-          component: () => import("../views/EditUserView.vue"),
-          meta: { requiresAuth: true },
         }
       ]
     },{
@@ -106,9 +90,14 @@ const router = createRouter({
       name: 'notifications',
       component: () => import('../views/NotificationsView.vue'),
       meta: { requiresAuth: true },
+    },{
+      path: '/notification/:id',
+      name: 'notification',
+      component: () => import('../views/NotificationView.vue'),
+      meta: { requiresAuth: true },
       children : [
         {
-          path: '/notifications/delete/:id',
+          path: '',
           name: 'notification-delete',
           component: () => import("../views/DeleteNotificationView.vue"),
           meta: { requiresAuth: true },

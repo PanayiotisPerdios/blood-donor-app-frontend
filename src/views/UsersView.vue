@@ -35,7 +35,7 @@ onMounted(() => {
                 <td>{{ user.username }}</td>
                 <td>
                   <tr><RouterLink :to="{ name: 'user-details', params: { id: user.id }}">Details</RouterLink></tr>
-                  <tr v-if="!applicationStore.userData.roles.includes('ROLE_SECRETARY')"><RouterLink :to="{ name: 'user-delete', params: { id: user.id }}">Delete</RouterLink></tr>
+                  <tr v-if="applicationStore.userData.roles.includes('ROLE_ADMIN')"><RouterLink :to="{ name: 'user-delete', params: { id: user.id }}">Delete</RouterLink></tr>
                 </td>
               </tr>
               </tbody>

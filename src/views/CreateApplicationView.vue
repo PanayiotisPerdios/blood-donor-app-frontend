@@ -1,9 +1,11 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useRemoteData } from "@/composables/useRemoteData.js";
-import { useApplicationStore } from '@/stores/application.js';
+import { useApplicationStore as useUserStore } from '@/stores/user.js'
 
-const applicationStore = useApplicationStore();
+
+const userStore = useUserStore();
+
 
 
 
@@ -13,6 +15,7 @@ const formDataRef = ref({
   lastName: '',
   bloodType: '',
   age: null,
+  approved: false,
   bloodTest: {
     id: null,
     height: null,
@@ -30,7 +33,7 @@ const formDataRef = ref({
 
 const urlRef = computed(() => {
 
-  const userId = applicationStore.getUserId();
+  const userId = userStore.getUserId();
   return `http://localhost:9090/api/application/new/${userId}`;
 });
 
@@ -40,7 +43,6 @@ const methodRef = ref("POST");
 const { data, performRequest } = useRemoteData(urlRef, authRef, methodRef, formDataRef, );
 
 const onSubmit = () => {
-
   performRequest();
 };
 

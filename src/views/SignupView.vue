@@ -1,6 +1,5 @@
 <script setup>
-// @EXERCISE: If user is authenticated redirect to the requested URL.
-// @EXERCISE: If user is not authenticated, keep the requested URL and after a successful authentication redirect to the requested resource.
+
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -12,7 +11,7 @@ const loading = ref(false);
 const credentials = ref({
   username: '',
   email: '',
-  password: ''
+  password: '',
 });
 const signupFailed = ref(false);
 
@@ -60,47 +59,25 @@ const onFormSubmit = () => {
           </div>
           <form v-else>
             <div class="mb-2" v-if="signupFailed">
-              <!--
-@EXERCISE: Be more specific.
-E.g., user does not exist, credentials are not valid, etc.
-Always consider security, i.e., sometimes you may not want to unveil information.
--->
               <div class="alert alert-danger" role="alert">
                 Signup failed!
               </div>
             </div>
             <div class="mb-2">
               <label for="usernameFormControl" class="form-label mb-1">Username</label>
-              <input
-                v-model="credentials.username"
-                type="text"
-                class="form-control"
-                id="usernameFormControl"
-              />
+              <input v-model="credentials.username" type="text" class="form-control" id="usernameFormControl" />
             </div>
             <div class="mb-2">
               <label for="emailFormControl" class="form-label mb-1">Email</label>
-              <input
-                v-model="credentials.email"
-                type="email"
-                class="form-control"
-                id="emailFormControl"
-              />
+              <input v-model="credentials.email" type="email" class="form-control" id="emailFormControl" />
             </div>
             <div class="mb-2">
               <label for="passwordFormControl" class="form-label mb-1">Password</label>
-              <input
-                v-model="credentials.password"
-                type="password"
-                class="form-control"
-                id="passwordFormControl"
-              />
+              <input v-model="credentials.password" type="password" class="form-control" id="passwordFormControl" />
             </div>
             <button @click="onFormSubmit" type="submit" class="btn btn-primary">
               Signup
-              <span class="fst-italic" v-if="credentials.username"
-              >as {{ credentials.username }}</span
-              >
+              <span class="fst-italic" v-if="credentials.username">as {{ credentials.username }}</span>
             </button>
           </form>
         </div>

@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
-import { useApplicationStore } from '@/stores/application.js';
+import { useApplicationStore } from '@/stores/user.js';
 const applicationStore = useApplicationStore();
 
 const urlRef = ref('http://localhost:9090/api/user/all');

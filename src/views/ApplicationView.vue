@@ -1,9 +1,13 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router';
 import { RouterLink } from 'vue-router';
 
 const route = useRoute();
+
+const urlRef = computed(() => {
+  return 'http://localhost:9090/api/application/' + applicationIdRef.value;
+});
 
 const applicationIdRef = ref(null);
 

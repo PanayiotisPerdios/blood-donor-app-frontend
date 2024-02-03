@@ -13,7 +13,7 @@ function checkJWT(token) {
   return currentTime < payload.exp; // Check if token is expired
 }
 
-export const useApplicationStore = defineStore('application', () => {
+export const useApplicationStore = defineStore('user', () => {
   const userData = ref();
 
   const setUserData = (tempUserData) => {

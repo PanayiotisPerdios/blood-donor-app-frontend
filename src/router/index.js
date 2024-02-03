@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useApplicationStore } from '@/stores/application.js'
+import { useApplicationStore } from '@/stores/user.js'
 
 
 const router = createRouter({
@@ -9,6 +9,12 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('../views/HomeView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/phonenumber',
+      name: 'phonenumber',
+      component: () => import('../views/UpdatePersonalInfoView.vue'),
       meta: { requiresAuth: true }
     },
     {
@@ -112,17 +118,11 @@ const router = createRouter({
     {
       path: '/signin',
       name: 'signin',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/SigninView.vue')
     },
     {
       path: '/signup',
       name: 'signup',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/SignupView.vue')
 
     },
@@ -130,6 +130,12 @@ const router = createRouter({
       path: '/signout',
       name: 'signout',
       component: () => import('../views/SignoutView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/user-application/:id',
+      name: 'user-application',
+      component: () => import('../views/UserApplicationView.vue'),
       meta: { requiresAuth: true }
     },
     {

@@ -1,15 +1,15 @@
 <script setup>
 import { onBeforeMount } from 'vue';
 import { RouterView } from 'vue-router';
-import { useApplicationStore } from '@/stores/application.js';
+import { useApplicationStore as useUserStore } from '@/stores/user.js';
 import AppHeader from '@/components/AppHeader.vue';
 
-const { loadUserData } = useApplicationStore();
+const { loadUserData } = useUserStore();
 
 onBeforeMount(() => {
-  // If this method is non-blocking, add a loader.
   loadUserData();
 });
+
 </script>
 
 <template>

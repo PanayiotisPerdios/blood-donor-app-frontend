@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref, computed } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
-import { useApplicationStore } from '@/stores/application.js';
+import { useApplicationStore } from '@/stores/user.js';
 import { useRoute, useRouter } from 'vue-router';
 import { RouterLink } from 'vue-router';
 
@@ -42,7 +42,7 @@ onMounted(() => {
                 <th>Type</th>
                 <th>Hospital name</th>
               </tr>
-              <pre></pre>
+              <pre>{{data}}</pre>
               </thead>
               <tbody v-if="data">
               <tr v-for="notification in data" :key="notification.id">

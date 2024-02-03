@@ -8,7 +8,7 @@ const route = useRoute();
 
 const userIdRef = ref(null);
 const urlRef = computed(() => {
-  return `  http://localhost:9090/api/user/${userIdRef.value}`;
+  return `http://localhost:9090/api/user/${userIdRef.value}`;
 });
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
@@ -42,6 +42,11 @@ onMounted(() => {
       <tr>
         <th>Last Blood Donation:</th>
         <td>{{ data.lastBloodDonation }}</td>
+      </tr>
+      <tr>
+        <th>Phone Number:</th>
+        <td v-if="data.phoneNumber">{{ data.phoneNumber }}</td>
+        <td v-else>No phone number</td>
       </tr>
       <tr>
         <th>Roles:</th>

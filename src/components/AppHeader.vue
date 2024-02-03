@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink} from 'vue-router'
-import { useApplicationStore } from '@/stores/application.js';
+import { useApplicationStore } from '@/stores/user.js';
 const applicationStore = useApplicationStore();
 
 
@@ -26,6 +26,12 @@ const applicationStore = useApplicationStore();
           </li>
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'profile' }" class="nav-link text-white">Profile</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+            <router-link :to="{ name: 'user-application',params: { id: applicationStore.userData.id } }" class="nav-link text-white">User Application</router-link>
+          </li>
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+            <router-link :to="{ name: 'phonenumber' }" class="nav-link text-white">Add phone number</router-link>
           </li>
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'home' }" class="nav-link text-white">Home</router-link>

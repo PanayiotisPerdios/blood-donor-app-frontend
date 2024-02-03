@@ -1,5 +1,5 @@
 <script setup>
-import { useApplicationStore } from '@/stores/application.js';
+import { useApplicationStore } from '@/stores/user.js';
 const { userData } = useApplicationStore();
 </script>
 

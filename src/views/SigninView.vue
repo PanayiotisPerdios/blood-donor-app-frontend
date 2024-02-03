@@ -1,13 +1,12 @@
 <script setup>
-// @EXERCISE: If user is authenticated redirect to the requested URL.
-// @EXERCISE: If user is not authenticated, keep the requested URL and after a successful authentication redirect to the requested resource.
 import { onBeforeMount, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useApplicationStore } from '@/stores/application.js';
+import { useApplicationStore as useUserStore } from '@/stores/user.js';
+
 
 
 const router = useRouter();
-const { setUserData, persistUserData, isAuthenticated } = useApplicationStore();
+const { setUserData, persistUserData, isAuthenticated } = useUserStore();
 
 const loading = ref(false);
 const credentials = ref({
@@ -68,11 +67,6 @@ onBeforeMount(() => {
           </div>
           <form v-else>
             <div class="mb-2" v-if="authenticationFailed">
-              <!--
-@EXERCISE: Be more specific.
-E.g., user does not exist, credentials are not valid, etc.
-Always consider security, i.e., sometimes you may not want to unveil information.
--->
               <div class="alert alert-danger" role="alert">
                 Authentication failed!
               </div>

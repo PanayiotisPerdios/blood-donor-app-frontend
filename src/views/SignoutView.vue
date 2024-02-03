@@ -2,7 +2,7 @@
 
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useApplicationStore } from '@/stores/application.js';
+import { useApplicationStore } from '@/stores/user.js';
 
 const router = useRouter();
 const { clearUserData } = useApplicationStore();

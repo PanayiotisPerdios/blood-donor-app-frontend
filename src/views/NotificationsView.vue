@@ -42,7 +42,6 @@ onMounted(() => {
                 <th>Type</th>
                 <th>Hospital name</th>
               </tr>
-              <pre>{{data}}</pre>
               </thead>
               <tbody v-if="data">
               <tr v-for="notification in data" :key="notification.id">

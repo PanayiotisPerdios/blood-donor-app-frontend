@@ -31,7 +31,7 @@ const applicationStore = useApplicationStore();
             <router-link :to="{ name: 'user-application',params: { id: applicationStore.userData.id } }" class="nav-link text-white">User Application</router-link>
           </li>
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
-            <router-link :to="{ name: 'phonenumber' }" class="nav-link text-white">Add phone number</router-link>
+            <router-link :to="{ name: 'edit' }" class="nav-link text-white">Edit Personal Info</router-link>
           </li>
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'home' }" class="nav-link text-white">Home</router-link>

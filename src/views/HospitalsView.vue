@@ -10,6 +10,7 @@ const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
 
 onMounted(() => {
   performRequest();
+
 });
 
 </script>

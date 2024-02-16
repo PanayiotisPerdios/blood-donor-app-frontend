@@ -15,7 +15,9 @@ const { data, performRequest } = useRemoteData(urlRef, authRef, methodRef, formD
 
 const onSubmit = () => {
   performRequest();
-  console.log(data);
+  setTimeout(() => {
+    location.reload();
+  }, 1000);
 };
 
 </script>

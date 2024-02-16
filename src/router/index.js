@@ -12,8 +12,8 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
-      path: '/phonenumber',
-      name: 'phonenumber',
+      path: '/edit',
+      name: 'edit',
       component: () => import('../views/UpdatePersonalInfoView.vue'),
       meta: { requiresAuth: true }
     },

@@ -2,6 +2,8 @@
 import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
 import { useRoute } from 'vue-router';
+import { useApplicationStore } from '@/stores/user.js';
+const applicationStore = useApplicationStore();
 
 const route = useRoute();
 
@@ -52,8 +54,8 @@ onMounted(() => {
                   <tr><RouterLink :to="{ name: 'application-delete', params: { id: application.id }}">Delete</RouterLink></tr>
                 </td>
                 <td>
-                  <button @click="() => updateApprovalStatus(application.id, true)" role="link">Approve</button>
-                  <button @click="() => updateApprovalStatus(application.id, false)" role="link">Reject</button>
+                  <button v-if="!applicationStore.userData.roles.includes('ROLE_ADMIN')" @click="() => updateApprovalStatus(application.id, true)" role="link">Approve</button>
+                  <button v-if="!applicationStore.userData.roles.includes('ROLE_ADMIN')" @click="() => updateApprovalStatus(application.id, false)" role="link">Reject</button>
                 </td>
               </tr>
               </tbody>

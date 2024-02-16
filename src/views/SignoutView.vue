@@ -1,6 +1,6 @@
 <script setup>
 
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useApplicationStore } from '@/stores/user.js';
 
@@ -9,17 +9,17 @@ const { clearUserData } = useApplicationStore();
 
 const loading = ref(false);
 
-const onFormSubmit = () => {
-  // Perform a logout by flushing user data stored in tab state (pinia) and local storage (browser).
-  // REMEMBER: authentication is stateless.
-  // That is, if users store a valid JWT they can use it until is expired.
-  // We cannot actually perform a logout because JWT cannot be invalided.
-  // A solution is to blacklist the JWT until is expired.
+const performSignOut = () => {
   loading.value = true;
   clearUserData();
-  setTimeout(function () {}, 2000); // Simulate a remote request.
-  router.push({ name: 'signin' });
+  setTimeout(() => {
+    router.push({ name: 'signin' });
+  }, 1000); // Simulate a remote request.
 };
+
+onMounted(() => {
+  performSignOut();
+});
 </script>
 
 <template>

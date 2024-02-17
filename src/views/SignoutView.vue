@@ -14,7 +14,7 @@ const performSignOut = () => {
   clearUserData();
   setTimeout(() => {
     router.push({ name: 'signin' });
-  }, 1000); // Simulate a remote request.
+  }, 1000);
 };
 
 onMounted(() => {
@@ -33,9 +33,6 @@ onMounted(() => {
           <div class="spinner-border" role="status" v-if="loading">
             <span class="visually-hidden">Loading...</span>
           </div>
-          <form v-else>
-            <button @click="onFormSubmit" type="submit" class="btn btn-primary">Signout</button>
-          </form>
         </div>
       </div>
     </div>

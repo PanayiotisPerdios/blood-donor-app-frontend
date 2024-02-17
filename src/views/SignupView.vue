@@ -73,7 +73,7 @@ const onFormSubmit = () => {
             </div>
             <div class="mb-2">
               <label for="passwordFormControl" class="form-label mb-1">Password</label>
-              <input v-model="credentials.password" type="password" class="form-control" id="passwordFormControl" />
+              <input v-model="credentials.password" type="password" class="form-control" id="passwordFormControl" /><b>Password must be 6 characters long</b>
             </div>
             <button @click="onFormSubmit" type="submit" class="btn btn-primary">
               Signup

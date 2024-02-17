@@ -18,7 +18,6 @@ onMounted(() => {
         <div class="col-12">
           <div class="mb-4">
             <RouterLink class="small" :to="{ name: 'users' }">Back to User List</RouterLink>
-            <h1 class="fs-3">User #{{ userIdRef }}</h1>
           </div>
           <div class="mb-4">
             <ul class="nav border">

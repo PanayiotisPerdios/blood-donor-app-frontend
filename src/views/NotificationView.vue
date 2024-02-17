@@ -21,7 +21,6 @@ onMounted(() => {
         <div class="col-12">
           <div class="mb-4">
             <RouterLink class="small" :to="{ name: 'notifications' }">Back to Notification List</RouterLink>
-            <h1 class="fs-3">Notification #{{ notificationIdRef }}</h1>
           </div>
           <div>
             <router-view></router-view>

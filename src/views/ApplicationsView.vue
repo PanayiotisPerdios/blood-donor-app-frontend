@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
 import { useRoute } from 'vue-router';
 import { useApplicationStore } from '@/stores/user.js';
+import router from '@/router/index.js'
 const applicationStore = useApplicationStore();
 
 const route = useRoute();
@@ -18,8 +19,11 @@ const updateApprovalStatus = (applicationId, approved) => {
     : `http://localhost:9090/api/application/reject/${applicationId}`;
 
   useRemoteData(ref(approvalEndpoint), authRef, ref('POST')).performRequest();
-  performRequest();
-};
+
+  if (!approved) {
+    router.push({ name: 'application-delete', params: { id: applicationId } });  }
+
+  };
 
 onMounted(() => {
   performRequest();
@@ -51,7 +55,7 @@ onMounted(() => {
                 <td>{{ application.lastName }}</td>
                 <td>
                   <tr><RouterLink :to="{ name: 'application-details', params: { id: application.id }}">Details</RouterLink></tr>
-                  <tr><RouterLink :to="{ name: 'application-delete', params: { id: application.id }}">Delete</RouterLink></tr>
+                  <tr v-if="!applicationStore.userData.roles.includes('ROLE_SECRETARY')"><RouterLink :to="{ name: 'application-delete', params: { id: application.id }}">Delete</RouterLink></tr>
                 </td>
                 <td>
                   <button v-if="!applicationStore.userData.roles.includes('ROLE_ADMIN')" @click="() => updateApprovalStatus(application.id, true)" role="link">Approve</button>

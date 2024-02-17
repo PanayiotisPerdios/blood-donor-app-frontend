@@ -80,8 +80,13 @@ const onSubmit = () => {
         <label for="bloodType">Blood Type</label>
         <select v-model="formDataRef.bloodType" class="form-select" id="bloodType">
           <option value="O+">O+</option>
+          <option value="O-">O-</option>
           <option value="A+">A+</option>
+          <option value="A-">A-</option>
           <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
         </select>
       </div>
         <div class="mb-2">

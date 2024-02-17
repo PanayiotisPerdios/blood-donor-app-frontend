@@ -11,25 +11,42 @@ const urlRef = ref('');
 
 const authRef = ref(true);
 const methodRef = ref("DELETE");
+const loading = ref(false);
 
-const { loading, performRequest } = useRemoteData(urlRef, authRef, methodRef);
+
+const { performRequest } = useRemoteData(urlRef, authRef, methodRef);
 
 
 const deleteUser = () => {
+  loading.value = true;
   urlRef.value = `http://localhost:9090/api/user/delete/${userIdRef.value}`;
   performRequest();
+  setTimeout(() => {
+    router.push({ name: 'users' });
+  }, 900);
 };
 
 onMounted(() => {
-  // Extract application ID from the route parameters
   userIdRef.value = route.params.id;
+  deleteUser()
 });
 
 </script>
 
 <template>
-  <div>
-    <button @click="deleteUser">Delete User</button>
+  <div class="bg-body-tertiary">
+    <div class="container">
+      <div class="row py-4 px-3">
+        <div class="col-4">
+          <div class="mb-4">
+            <h1 class="fs-3">Deleting User</h1>
+          </div>
+          <div class="spinner-border" role="status" v-if="loading">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -83,6 +83,11 @@ const router = createRouter({
           name: 'user-delete',
           component: () => import("../views/DeleteUserView.vue"),
           meta: { requiresAuth: true },
+        },{
+          path: '',
+          name: 'user-edit',
+          component: () => import("../views/EditUserCredentialsView.vue"),
+          meta: { requiresAuth: true },
         }
       ]
     },{

@@ -56,6 +56,7 @@ onMounted(() => {
                 <td>
                   <tr><RouterLink :to="{ name: 'application-details', params: { id: application.id }}">Details</RouterLink></tr>
                   <tr v-if="!applicationStore.userData.roles.includes('ROLE_SECRETARY')"><RouterLink :to="{ name: 'application-delete', params: { id: application.id }}">Delete</RouterLink></tr>
+
                 </td>
                 <td>
                   <button v-if="!applicationStore.userData.roles.includes('ROLE_ADMIN')" @click="() => updateApprovalStatus(application.id, true)" role="link">Approve</button>

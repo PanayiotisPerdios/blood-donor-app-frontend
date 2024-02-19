@@ -27,7 +27,7 @@ const applicationStore = useApplicationStore();
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
             <router-link :to="{ name: 'profile' }" class="nav-link text-white">Profile</router-link>
           </li>
-          <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+          <li class="nav-item" v-if="applicationStore.isAuthenticated === true && (!applicationStore.userData.roles.includes('ROLE_SECRETARY') && !applicationStore.userData.roles.includes('ROLE_ADMIN'))">
             <router-link :to="{ name: 'user-application',params: { id: applicationStore.userData.id } }" class="nav-link text-white">User Application</router-link>
           </li>
           <li class="nav-item" v-if="applicationStore.isAuthenticated === true">

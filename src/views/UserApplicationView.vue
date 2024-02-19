@@ -27,6 +27,9 @@ onMounted(() => {
             <h1 class="fs-3">User Application</h1>
           </div>
           <div v-if="data">
+            <h1 class="fs-3" v-if="!data.approved && !data.rejected">Approval Pending...</h1>
+            <h1 class="fs-3" v-if="data.approved && !data.rejected">Application has been Approved</h1>
+            <h1 class="fs-3" v-if="!data.approved && data.rejected">Application has been Rejected</h1>
             <table class="table">
               <thead>
               Application
@@ -36,7 +39,6 @@ onMounted(() => {
                 <th>Last Name</th>
                 <th>Blood Type</th>
                 <th>Area</th>
-                <th>Approval</th>
               </tr>
               </thead>
               <tbody>
@@ -46,7 +48,6 @@ onMounted(() => {
                 <td><pre>{{data.lastName}}</pre></td>
                 <td><pre>{{data.bloodType}}</pre></td>
                 <td><pre>{{data.area}}</pre></td>
-                <td><pre>{{data.approved}}</pre></td>
               </tr>
               </tbody>
               <thead>

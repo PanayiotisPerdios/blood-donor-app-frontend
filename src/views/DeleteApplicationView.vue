@@ -22,7 +22,7 @@ const deleteApplication = () => {
   performRequest();
   setTimeout(() => {
     router.push({ name: 'applications' });
-  }, 900);
+  }, 400);
 };
 
 onMounted(() => {

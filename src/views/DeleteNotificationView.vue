@@ -22,7 +22,7 @@
     performRequest()
     setTimeout(() => {
       router.push({ name: 'notifications' });
-    }, 900);
+    }, 500);
   };
 
   onMounted(() => {

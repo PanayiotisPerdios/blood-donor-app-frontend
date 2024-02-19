@@ -19,6 +19,11 @@ onMounted(() => {
 </script>
 <template>
   <div>
+    <div v-if="data">
+      <h1 v-if="data.approved && !data.rejected">Approved</h1>
+      <h1 v-if="!data.approved && data.rejected">Rejected</h1>
+      <h1 v-if="!data.approved && !data.rejected">Pending...</h1>
+    </div>
     <table class="table">
       <thead>
       <tr>
@@ -26,11 +31,6 @@ onMounted(() => {
         <th>Field Value</th>
       </tr>
       </thead>
-      <tbody v-if="loading">
-      <tr>
-        <td colspan="2">Loading...</td>
-      </tr>
-      </tbody>
       <tbody v-if="data">
       <tr>
         <th>First Name:</th>
@@ -47,10 +47,6 @@ onMounted(() => {
       <tr>
         <th>Area</th>
         <td>{{ data.area }}</td>
-      </tr>
-      <tr>
-        <th>Approval:</th>
-        <td>{{ data.approved }}</td>
       </tr>
       <tr>
         <th>Height:</th>

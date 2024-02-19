@@ -14,7 +14,7 @@ const performSignOut = () => {
   clearUserData();
   setTimeout(() => {
     router.push({ name: 'signin' });
-  }, 1000);
+  }, 800);
 };
 
 onMounted(() => {

@@ -19,9 +19,9 @@ const updateApprovalStatus = (applicationId, approved) => {
     : `http://localhost:9090/api/application/reject/${applicationId}`;
 
   useRemoteData(ref(approvalEndpoint), authRef, ref('POST')).performRequest();
-
-  if (!approved) {
-    router.push({ name: 'application-delete', params: { id: applicationId } });  }
+  setTimeout(() => {
+    location.reload();
+  }, 700);
 
   };
 
@@ -47,7 +47,6 @@ onMounted(() => {
                 <th>First Name</th>
                 <th>Last Name</th>
               </tr>
-              <pre></pre>
               </thead>
               <tbody v-if="data">
               <tr v-for="application in data">
@@ -55,12 +54,13 @@ onMounted(() => {
                 <td>{{ application.lastName }}</td>
                 <td>
                   <tr><RouterLink :to="{ name: 'application-details', params: { id: application.id }}">Details</RouterLink></tr>
-                  <tr v-if="!applicationStore.userData.roles.includes('ROLE_SECRETARY')"><RouterLink :to="{ name: 'application-delete', params: { id: application.id }}">Delete</RouterLink></tr>
-
+                  <tr><RouterLink :to="{ name: 'application-delete', params: { id: application.id }}">Delete</RouterLink></tr>
                 </td>
                 <td>
-                  <button v-if="!applicationStore.userData.roles.includes('ROLE_ADMIN')" @click="() => updateApprovalStatus(application.id, true)" role="link">Approve</button>
-                  <button v-if="!applicationStore.userData.roles.includes('ROLE_ADMIN')" @click="() => updateApprovalStatus(application.id, false)" role="link">Reject</button>
+                  <button v-if="!applicationStore.userData.roles.includes('ROLE_ADMIN') && !application.approved && !application.rejected" @click="() => updateApprovalStatus(application.id, true)" role="link">Approve</button>
+                  <button v-if="!applicationStore.userData.roles.includes('ROLE_ADMIN') && !application.approved && !application.rejected" @click="() => updateApprovalStatus(application.id, false)" role="link">Reject</button>
+                  <b v-if="!applicationStore.userData.roles.includes('ROLE_ADMIN') && application.approved && !application.rejected">Application Approved</b>
+                  <b v-if="!applicationStore.userData.roles.includes('ROLE_ADMIN') && !application.approved && application.rejected">Application Rejected</b>
                 </td>
               </tr>
               </tbody>

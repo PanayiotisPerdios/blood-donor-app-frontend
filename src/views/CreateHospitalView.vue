@@ -6,8 +6,10 @@ import { useRemoteData } from "@/composables/useRemoteData.js";
 const formDataRef = ref({
   name: ''
 });
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
-const urlRef = ref("http://localhost:9090/api/hospital/new");
+
+const urlRef = ref(`${backendEnvVar}/api/hospital/new`);
 const authRef = ref(true);
 const methodRef = ref("POST");
 

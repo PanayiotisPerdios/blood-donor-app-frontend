@@ -5,18 +5,20 @@ import { useRoute } from 'vue-router';
 import { useApplicationStore } from '@/stores/user.js';
 import router from '@/router/index.js'
 const applicationStore = useApplicationStore();
+const backendEnvVar = import.meta.env.VITE_BACKEND;
+
 
 const route = useRoute();
 
-const urlRef = ref('http://localhost:9090/api/application/all');
+const urlRef = ref(`${backendEnvVar}/api/application/all`);
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
 
 
 const updateApprovalStatus = (applicationId, approved) => {
   const approvalEndpoint = approved
-    ? `http://localhost:9090/api/application/approve/${applicationId}`
-    : `http://localhost:9090/api/application/reject/${applicationId}`;
+    ? `${backendEnvVar}/api/application/approve/${applicationId}`
+    : `${backendEnvVar}/api/application/reject/${applicationId}`;
 
   useRemoteData(ref(approvalEndpoint), authRef, ref('POST')).performRequest();
   setTimeout(() => {

@@ -10,12 +10,13 @@ const route = useRoute();
 
 
 const applicationStore = useApplicationStore();
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 
 
 const urlRef = computed(() => {
   const userId = applicationStore.getUserId();
-  return `http://localhost:9090/api/notifications/${userId}`;
+  return `${backendEnvVar}/api/notifications/${userId}`;
 });
 
 const authRef = ref(true);

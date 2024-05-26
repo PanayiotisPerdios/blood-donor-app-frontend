@@ -13,6 +13,7 @@ const applicationStore = useApplicationStore();
 const submittedMessage = ref(null);
 
 const route = useRoute();
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 
 const formDataRef = ref({
@@ -23,7 +24,7 @@ const formDataRef = ref({
 
 const methodRef = ref("PATCH");
 const urlRef = computed(() => {
-  return `http://localhost:9090/api/user/edit/${userIdRef.value}`;
+  return `${backendEnvVar}/api/user/edit/${userIdRef.value}`;
 });
 
 const authRef = ref(true);

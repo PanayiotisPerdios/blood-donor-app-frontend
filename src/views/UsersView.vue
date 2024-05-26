@@ -3,8 +3,9 @@ import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
 import { useApplicationStore } from '@/stores/user.js';
 const applicationStore = useApplicationStore();
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
-const urlRef = ref('http://localhost:9090/api/user/all');
+const urlRef = ref(`${backendEnvVar}/api/user/all`);
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
 

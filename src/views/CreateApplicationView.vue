@@ -5,6 +5,8 @@ import { useApplicationStore as useUserStore } from '@/stores/user.js'
 
 
 const userStore = useUserStore();
+const backendEnvVar = import.meta.env.VITE_BACKEND;
+
 
 
 
@@ -34,7 +36,7 @@ const formDataRef = ref({
 const urlRef = computed(() => {
 
   const userId = userStore.getUserId();
-  return `http://localhost:9090/api/application/new/${userId}`;
+  return `${backendEnvVar}/api/application/new/${userId}`;
 });
 
 const authRef = ref(true);

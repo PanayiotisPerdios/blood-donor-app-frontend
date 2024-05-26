@@ -4,9 +4,11 @@ import { useRoute } from 'vue-router';
 import { RouterLink } from 'vue-router';
 
 const route = useRoute();
+const backendEnvVar = import.meta.env.VITE_BACKEND;
+
 
 const urlRef = computed(() => {
-  return 'http://localhost:9090/api/application/' + applicationIdRef.value;
+  return `${backendEnvVar}/api/application/` + applicationIdRef.value;
 });
 
 const applicationIdRef = ref(null);

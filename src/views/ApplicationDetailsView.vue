@@ -4,10 +4,12 @@ import { useRoute } from 'vue-router';
 import { useRemoteData } from '@/composables/useRemoteData.js';
 
 const route = useRoute();
+const backendEnvVar = import.meta.env.VITE_BACKEND;
+
 
 const applicationIdRef = ref(null);
 const urlRef = computed(() => {
-  return 'http://localhost:9090/api/application/' + applicationIdRef.value;
+  return `${backendEnvVar}http://localhost:9090/api/application/` + applicationIdRef.value;
 });
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);

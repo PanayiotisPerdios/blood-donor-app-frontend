@@ -5,7 +5,6 @@ import { RouterLink } from 'vue-router';
 
 const route = useRoute();
 
-
 const notificationIdRef = ref(null);
 
 onMounted(() => {

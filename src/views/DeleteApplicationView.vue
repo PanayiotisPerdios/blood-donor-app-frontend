@@ -12,13 +12,14 @@ const urlRef = ref('');
 const authRef = ref(true);
 const methodRef = ref("DELETE");
 const loading = ref(false);
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const { performRequest } = useRemoteData(urlRef, authRef, methodRef);
 
 
 const deleteApplication = () => {
   loading.value = true;
-  urlRef.value = `http://localhost:9090/api/application/delete/${applicationIdRef.value}`;
+  urlRef.value = `${backendEnvVar}/api/application/delete/${applicationIdRef.value}`;
   performRequest();
   setTimeout(() => {
     router.push({ name: 'applications' });

@@ -11,6 +11,7 @@ const submittedMessage = ref(null);
 
 const route = useRoute();
 
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const formDataRef = ref({
   username: '',
@@ -21,7 +22,7 @@ const formDataRef = ref({
 const methodRef = ref("PATCH");
 const urlRef = computed(() => {
   const userId = applicationStore.getUserId();
-  return `http://localhost:9090/api/user/edit/${userId}`;
+  return `${backendEnvVar}/api/user/edit/${userId}`;
 });
 
 const authRef = ref(true);

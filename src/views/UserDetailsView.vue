@@ -5,10 +5,11 @@ import { useRemoteData } from '@/composables/useRemoteData.js';
 
 const router = useRouter();
 const route = useRoute();
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const userIdRef = ref(null);
 const urlRef = computed(() => {
-  return `http://localhost:9090/api/user/${userIdRef.value}`;
+  return `${backendEnvVar}/api/user/${userIdRef.value}`;
 });
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);

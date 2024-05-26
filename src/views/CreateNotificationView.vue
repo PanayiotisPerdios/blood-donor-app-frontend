@@ -9,9 +9,11 @@ const formDataRef = ref({
   hospitalName: null,
   userid:''
 });
+const backendEnvVar = import.meta.env.VITE_BACKEND;
+
 
 const urlRef = computed(() => {
-  return `http://localhost:9090/api/notifications/new/`+ formDataRef.value.userid;
+  return `${backendEnvVar}/api/notifications/new/`+ formDataRef.value.userid;
 });
 
 const authRef = ref(true);

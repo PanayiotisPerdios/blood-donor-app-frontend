@@ -12,6 +12,8 @@ const urlRef = ref('');
 const authRef = ref(true);
 const methodRef = ref("DELETE");
 const loading = ref(false);
+const backendEnvVar = import.meta.env.VITE_BACKEND;
+
 
 
 const { performRequest } = useRemoteData(urlRef, authRef, methodRef);
@@ -19,7 +21,7 @@ const { performRequest } = useRemoteData(urlRef, authRef, methodRef);
 
 const deleteUser = () => {
   loading.value = true;
-  urlRef.value = `http://localhost:9090/api/user/delete/${userIdRef.value}`;
+  urlRef.value = `${backendEnvVar}/api/user/delete/${userIdRef.value}`;
   performRequest();
   setTimeout(() => {
     router.push({ name: 'users' });

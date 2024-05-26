@@ -11,6 +11,7 @@
   const authRef = ref(true);
   const methodRef = ref("DELETE");
   const loading = ref(false);
+  const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 
 
@@ -18,7 +19,7 @@
 
   const deleteNotification = () => {
     loading.value = true;
-    urlRef.value = `http://localhost:9090/api/notifications/${notificationIdRef.value}`;
+    urlRef.value = `${backendEnvVar}/api/notifications/${notificationIdRef.value}`;
     performRequest()
     setTimeout(() => {
       router.push({ name: 'notifications' });

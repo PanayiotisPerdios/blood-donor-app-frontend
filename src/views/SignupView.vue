@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
+const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const loading = ref(false);
 const credentials = ref({
@@ -19,7 +20,7 @@ const onFormSubmit = () => {
   loading.value = true;
   signupFailed.value = false;
 
-  fetch('http://localhost:9090/api/auth/signup', {
+  fetch(`${backendEnvVar}/api/auth/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

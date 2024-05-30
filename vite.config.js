@@ -14,6 +14,10 @@ export default defineConfig(({ mode }) =>{
               target: `${env.VITE_BACKEND}`,
               changeOrigin: true,
               secure: false, 
+            },
+            '/api/auth/signin': {
+              target: `${env.VITE_BACKEND}`,
+              
             }
           }
   },        

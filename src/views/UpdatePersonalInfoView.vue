@@ -22,7 +22,7 @@ const formDataRef = ref({
 const methodRef = ref("PATCH");
 const urlRef = computed(() => {
   const userId = applicationStore.getUserId();
-  return `${backendEnvVar}/api/user/edit/${userId}`;
+  return `/api/user/edit/${userId}`;
 });
 
 const authRef = ref(true);

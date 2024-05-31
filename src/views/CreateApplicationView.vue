@@ -36,7 +36,7 @@ const formDataRef = ref({
 const urlRef = computed(() => {
 
   const userId = userStore.getUserId();
-  return `${backendEnvVar}/api/application/new/${userId}`;
+  return `/api/application/new/${userId}`;
 });
 
 const authRef = ref(true);

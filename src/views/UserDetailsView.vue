@@ -9,7 +9,7 @@ const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const userIdRef = ref(null);
 const urlRef = computed(() => {
-  return `${backendEnvVar}/api/user/${userIdRef.value}`;
+  return `/api/user/${userIdRef.value}`;
 });
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);

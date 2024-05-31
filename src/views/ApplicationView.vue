@@ -8,7 +8,7 @@ const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 
 const urlRef = computed(() => {
-  return `${backendEnvVar}/api/application/` + applicationIdRef.value;
+  return `/api/application/` + applicationIdRef.value;
 });
 
 const applicationIdRef = ref(null);

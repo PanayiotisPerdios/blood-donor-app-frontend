@@ -9,7 +9,7 @@ const formDataRef = ref({
 const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 
-const urlRef = ref(`${backendEnvVar}/api/hospital/new`);
+const urlRef = ref(`/api/hospital/new`);
 const authRef = ref(true);
 const methodRef = ref("POST");
 

@@ -18,7 +18,6 @@ const credentials = ref({
 const authenticationFailed = ref(false);
 
 const onFormSubmit = () => {
-  loading.value = true;
   authenticationFailed.value = false;
 
   fetch(`/api/auth/signin`, {

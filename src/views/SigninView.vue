@@ -20,7 +20,7 @@ const authenticationFailed = ref(false);
 const onFormSubmit = () => {
   authenticationFailed.value = false;
 
-  fetch(`${import.meta.env.VITE_BACKEND}/api/auth/signin`, {
+  fetch(`/api/auth/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

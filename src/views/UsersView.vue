@@ -5,7 +5,7 @@ import { useApplicationStore } from '@/stores/user.js';
 const applicationStore = useApplicationStore();
 const backendEnvVar = import.meta.env.VITE_BACKEND;
 
-const urlRef = ref(`/api/user/all`);
+const urlRef = ref(`${backendUrl}/api/user/all`);
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
 

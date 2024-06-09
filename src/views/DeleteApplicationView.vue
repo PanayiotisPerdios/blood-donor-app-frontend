@@ -19,7 +19,7 @@ const { performRequest } = useRemoteData(urlRef, authRef, methodRef);
 
 const deleteApplication = () => {
   loading.value = true;
-  urlRef.value = `/api/application/delete/${applicationIdRef.value}`;
+  urlRef.value = `${backendUrl}/api/application/delete/${applicationIdRef.value}`;
   performRequest();
   setTimeout(() => {
     router.push({ name: 'applications' });

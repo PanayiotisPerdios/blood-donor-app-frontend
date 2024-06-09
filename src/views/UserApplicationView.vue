@@ -8,7 +8,7 @@ const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const urlRef = computed(() => {
   const userId = applicationStore.getUserId()
-  return `/api/application/user/${userId}`;
+  return `${backendUrl}/api/application/user/${userId}`;
 });
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);

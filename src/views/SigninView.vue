@@ -20,7 +20,7 @@ const authenticationFailed = ref(false);
 const onFormSubmit = () => {
   authenticationFailed.value = false;
 
-  fetch(`/api/auth/signin`, {
+  fetch(`${backendUrl}/api/auth/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

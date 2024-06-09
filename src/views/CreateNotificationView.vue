@@ -13,7 +13,7 @@ const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 
 const urlRef = computed(() => {
-  return `/api/notifications/new/`+ formDataRef.value.userid;
+  return `${backendUrl}/api/notifications/new/`+ formDataRef.value.userid;
 });
 
 const authRef = ref(true);

@@ -20,7 +20,7 @@ const onFormSubmit = () => {
   loading.value = true;
   signupFailed.value = false;
 
-  fetch(`/api/auth/signup`, {
+  fetch(`${backendUrl}/api/auth/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

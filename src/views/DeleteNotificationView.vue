@@ -19,7 +19,7 @@
 
   const deleteNotification = () => {
     loading.value = true;
-    urlRef.value = `/api/notifications/${notificationIdRef.value}`;
+    urlRef.value = `${backendUrl}/api/notifications/${notificationIdRef.value}`;
     performRequest()
     setTimeout(() => {
       router.push({ name: 'notifications' });

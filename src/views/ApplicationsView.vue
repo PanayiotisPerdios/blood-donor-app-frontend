@@ -10,7 +10,7 @@ const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const route = useRoute();
 
-const urlRef = ref(`/api/application/all`);
+const urlRef = ref(`${backendUrl}/api/application/all`);
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
 

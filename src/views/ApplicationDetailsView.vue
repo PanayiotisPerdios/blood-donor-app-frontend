@@ -9,7 +9,7 @@ const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const applicationIdRef = ref(null);
 const urlRef = computed(() => {
-  return `${backendEnvVar}http://localhost:9090/api/application/` + applicationIdRef.value;
+  return `/api/application/` + applicationIdRef.value;
 });
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);

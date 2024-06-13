@@ -16,7 +16,7 @@ const backendEnvVar = import.meta.env.VITE_BACKEND;
 
 const urlRef = computed(() => {
   const userId = applicationStore.getUserId();
-  return `${backendEnvVar}/api/notifications/${userId}`;
+  return `/api/notifications/${userId}`;
 });
 
 const authRef = ref(true);

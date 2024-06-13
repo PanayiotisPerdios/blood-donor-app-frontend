@@ -21,7 +21,7 @@ const { performRequest } = useRemoteData(urlRef, authRef, methodRef);
 
 const deleteUser = () => {
   loading.value = true;
-  urlRef.value = `${backendEnvVar}/api/user/delete/${userIdRef.value}`;
+  urlRef.value = `/api/user/delete/${userIdRef.value}`;
   performRequest();
   setTimeout(() => {
     router.push({ name: 'users' });

@@ -24,7 +24,7 @@ const formDataRef = ref({
 
 const methodRef = ref("PATCH");
 const urlRef = computed(() => {
-  return `${backendEnvVar}/api/user/edit/${userIdRef.value}`;
+  return `/api/user/edit/${userIdRef.value}`;
 });
 
 const authRef = ref(true);

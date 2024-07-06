@@ -38,7 +38,7 @@ pipeline {
                     TAG=$HEAD_COMMIT-$BUILD_ID
                     # if we had multiple configurations in kubeconfig file, we should select the correct one
                     # kubectl config use-context devops
-                    kubectl set image deployment/vuejs-deployment spring=$DOCKER_PREFIX:$TAG
+                    kubectl set image deployment/vuejs-deployment vuejs=$DOCKER_PREFIX:$TAG
                     kubectl rollout status deployment vuejs-deployment --watch --timeout=2m
                 '''
             }
